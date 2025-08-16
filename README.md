@@ -1,56 +1,39 @@
-📝 Custom Form Builder (MERN + Tailwind CSS)
+# Custom Form Builder (MERN Stack + Tailwind CSS)
 
-A Custom Form Builder built with the MERN stack and Tailwind CSS, allowing users to create and fill interactive forms with advanced question types.
+A full‑stack **Custom Form Builder** built with the **MERN** stack and **Tailwind CSS**. Create, preview, and fill interactive forms featuring:
 
-This project supports drag-and-drop categorized questions, cloze (fill-in-the-blank) questions, and comprehension-based MCQs. Forms can be created, previewed, filled, and responses are stored in MongoDB.
+* **Categorized questions** (drag & drop)
+* **Cloze questions** (fill‑in‑the‑blank)
+* **Comprehension questions** (MCQs under a passage)
 
-🚀 Features
+All forms and responses are persisted in **MongoDB**.
 
-Form Builder UI – Add questions dynamically, configure options, and save forms.
+---
 
-Form Renderer – Fill forms as a student with interactive inputs.
+## Features
 
-Categorized Drag-and-Drop – Sort answers into categories with drag-and-drop.
+* **Form Builder UI** – Add questions dynamically, configure options, and save forms
+* **Renderer / Form Filling** – Student‑style interactive inputs
+* **Categorized Drag‑and‑Drop** – Sort answers into category buckets
+* **Cloze Inputs** – Type answers in underlined blanks
+* **Comprehension MCQs** – Multiple‑choice under a paragraph
+* **Images Support** – Header images and per‑question images
+* **Responsive** – Tailwind CSS for mobile & desktop
 
-Cloze Inputs – Type answers in underlined blanks.
+---
 
-Comprehension MCQs – Multiple-choice questions embedded under a passage.
+## Tech Stack
 
-Image Support – Add header images and images for questions.
+**Frontend:** React, Tailwind CSS, React Router, React DnD, Axios
+**Backend:** Node.js, Express.js
+**Database:** MongoDB (+ Mongoose)
+**Deploy:** Vercel/Netlify (frontend), Render/Railway (backend)
 
-Responsive Design – Optimized for both mobile and desktop using Tailwind CSS.
+---
 
-🛠️ Tech Stack
+## Project Structure
 
-Frontend
-
-React
-
-Tailwind CSS
-
-React Router
-
-React DnD
-
-Axios
-
-Backend
-
-Node.js
-
-Express.js
-
-Database
-
-MongoDB (with Mongoose Schemas)
-
-Deployment
-
-Vercel / Netlify (Frontend)
-
-Render / Railway (Backend)
-
-📂 Project Structure
+```
 backend/
   ├─ models/
   │   ├─ Form.js
@@ -69,56 +52,110 @@ frontend/
   │   └─ index.js
   ├─ tailwind.config.js
   └─ postcss.config.js
+```
 
-⚙️ Installation & Setup
-Backend
+---
+
+## Getting Started
+
+### Prerequisites
+
+* Node.js 18+
+* MongoDB (local or Atlas)
+
+### Environment Variables
+
+Create a **backend** `.env` file:
+
+```
+PORT=5000
+MONGO_URI=mongodb://localhost:27017/formbuilder
+CLIENT_ORIGIN=http://localhost:3000
+```
+
+(Optional) In **frontend**, if you use an Axios base URL env:
+
+```
+REACT_APP_API_BASE_URL=http://localhost:5000
+```
+
+### Installation & Run
+
+**Backend**
+
+```bash
 cd backend
 npm install
 npm start
+```
 
+Starts on: `http://localhost:5000`
 
-Backend runs on: http://localhost:5000
+**Frontend**
 
-Frontend
+```bash
 cd frontend
 npm install
 npm start
+```
 
+Starts on: `http://localhost:3000`
 
-Frontend runs on: http://localhost:3000
+---
 
-📖 Usage
+## Usage
 
-Open the Form Builder (frontend).
+1. Open the **Form Builder** (frontend)
+2. Add questions of type **Categorized**, **Cloze**, or **Comprehension (MCQ)**
+3. Save the form → stored in MongoDB
+4. Open the **Renderer** to preview/fill
+5. Submit responses → stored in MongoDB
 
-Create a new form by adding questions of type:
+---
 
-Categorized (drag-and-drop)
+## Question Types (Overview)
 
-Cloze (fill-in-the-blank)
+* **Categorized:** Define categories and draggable answer chips; users drag chips into categories
+* **Cloze:** Insert blanks inside text; users type answers into inputs
+* **Comprehension:** Provide a paragraph and attach MCQs (one or multiple correct as you configure)
 
-Comprehension (MCQ)
+---
 
-Save the form – it will be stored in MongoDB.
+## API (typical routes)
 
-Open the Form Renderer link to preview and fill the form.
+> Adjust if your route names differ.
 
-Submit responses – they will be saved in MongoDB.
+**Forms**
 
-🗒️ Notes
+* `POST /api/forms` – create a form
+* `GET /api/forms/:id` – get a form
+* `PUT /api/forms/:id` – update a form
+* `DELETE /api/forms/:id` – delete a form
 
-Originally started as a small demo but grew into a full interactive form builder.
+**Responses**
 
-Core features are functional, though some enhancements are in progress.
+* `POST /api/responses` – submit a response
+* `GET /api/responses/form/:formId` – list responses for a form
 
-Designed as a demo project to showcase MERN stack, Tailwind CSS, and interactive form handling.
+---
 
-📌 Roadmap (Future Enhancements)
+## Roadmap
 
-User authentication (login/signup).
+* Authentication (creator & respondent roles)
+* Form dashboard & sharing links
+* Response analytics (charts, export CSV/Excel)
+* Question banks & templates
 
-Dashboard for managing multiple forms.
+---
 
-Response analytics (charts & insights).
+## Notes
 
-Export responses to CSV/Excel.
+* Started as a small demo; evolved to include drag‑and‑drop and cloze
+* Core features are functional; improvements in progress
+* Demonstrates MERN + Tailwind + interactive form handling
+
+---
+
+## License
+
+MIT
